@@ -108,6 +108,24 @@ app.post('/movie/actor/add', function(req, res) {
     res.redirect('/');
 });
 
+// Servicio Post para crear un actor
+app.post('/firstActor/secondActor/find', function(req, res) {
+    var firstActor = req.body.nameActor1;
+    var secondActor = req.body.nameActor2;
+
+    session
+        .run('MATCH p=shortestPath((n:Actor {name: {firstActor}})-[*..4]-(m:Actor {name: {secondActor}})) RETURN p', {firstActor:firstActor, secondActor:secondActor})
+        .then(function(result) {
+            console.log(result.records[0]._fields);
+            res.redirect('/');
+            session.close();
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
+    res.redirect('/');
+});
+
 
 app.listen(3000);
 console.log('Server Started on Port 3000');
