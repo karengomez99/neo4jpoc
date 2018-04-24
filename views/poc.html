@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>POC</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="jumbotron" style="padding-left:50px;">
+            <label>Añade un nodo: </label>
+            <form method="post" action="/movie/add">
+                <label>Nombre del nodo: </label>
+                <br>
+                <input type="text" name="title">
+                <br>
+
+                <label>Descripción: </label>
+                <br>
+                <input type="text" name="released">
+                <br>
+                <br>
+                <input type="submit" name="Submit">
+            </form>
+            <br />
+            <label>Crea una relación entre dos nodos: </label>
+            <form method="post" action="/movie/actor/add">
+                <label>Nombre del nodo: </label>
+                <br>
+                <input type="text" name="title1">
+                <br>
+
+                <label>Nombre del nodo a relacionar: </label>
+                <br>
+                <input type="text" name="title2">
+                <br>
+                <br>
+
+                <input type="submit" name="Submit">
+            </form>
+            <br />
+            <label>Path más corto entre dos nodos: </label>
+            <form method="post" action="/firstActor/secondActor/find">
+                <label>Nodo 1</label>
+                <br>
+                <input type="text" name="title1">
+                <br>
+
+                <label>Nodo 2</label>
+                <br>
+                <input type="text" name="title2">
+                <br>
+                <br>
+
+                <input type="submit" name="Submit">
+            </form>
+            <h1>Movies</h1>
+            <ul>
+                <% movies.forEach(function(movie){ %>
+                    <li><%= movie.title %></li>
+                <% }) %>   
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>
