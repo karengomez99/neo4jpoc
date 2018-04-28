@@ -9,7 +9,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/app.js"></script>
 </head>
 
 <body>
@@ -73,12 +73,9 @@
 
                 <input type="submit" name="Submit">
             </form>
-            <h1>Movies</h1>
-            <ul>
-                <% movies.forEach(function(movie){ %>
-                    <li><%= movie.title %></li>
-                <% }) %>   
-            </ul>
+            <br />
+            <label>Conceptos</label>
+            <ul>{{movies.title}}</ul>
 
         </div>
     </div>

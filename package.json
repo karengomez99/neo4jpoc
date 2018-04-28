@@ -9,10 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express":"*",
     "body-parser": "*",
-    "ejs":"^2.4.2",
-    "morgan":"*",
-    "neo4j-driver":"*"
+    "ejs": "^2.4.2",
+    "express": "*",
+    "morgan": "*",
+    "neo4j-driver": "*",
+    "node-while-loop": "^1.0.4"
   }
 }
