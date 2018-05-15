@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title0
+  label Añade un nodo: 
+        form(method='GET' action='/create')
+          button.btn.btn-primary(type='submit') Crear nodo
+  label Añade una relacion: 
+        form(method='GET' action='/createRelationship')
+          button.btn.btn-primary(type='submit') Crear relacion

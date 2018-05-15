@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title0
+  label Crea una relacion: 
+        form(method='POST' action='/createRelation')
+          div.form-group
+            label(for='nodeFrom') Nodo 1:
+            input#name.form-control(type='text', placeholder='Nodo 1' name='nodeFrom')
+          div.form-group
+            label(for='nodeTo') Nodo 2:
+            input#name.form-control(type='text', placeholder='Nodo 2' name='nodeTo')
+          select#optionVal
+            option Rel1
+            option Rel2
+            option Rel3
+            option Rel4
+          button.btn.btn-primary(type='submit') Sign up
