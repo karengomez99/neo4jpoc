@@ -40,7 +40,7 @@ app.post('/createNode', function (req, res) {
     var descriptionParam = req.body.nodeDescription;
 
     session
-        .run('CREATE(n:Nodes {nodeTitle:{nodeTitleParam}, nodeDescription:{nodeDescriptionParam}}) RETURN n.nodeTitle', { nodeTitleParam: titleParam, nodeDescriptionParam: descriptionParam })
+        .run('CREATE(n:Nodes {title:{nodeTitleParam}, description:{nodeDescriptionParam}}) RETURN n.title', { nodeTitleParam: titleParam, nodeDescriptionParam: descriptionParam })
         .then(function (result) {
             res.redirect('/');
             session.close();
@@ -56,11 +56,10 @@ app.post('/createNode', function (req, res) {
 app.post('/createRelation', function (req, res) {
     var nodeFrom = req.body.nodeFrom;
     var nodeTo = req.body.nodeTo;
-    var optionVal = req.body.optionVal;
+    var relationParam = req.body.relation;
 
-    console.log(optionVal);
-   /* session
-        .run('MATCH(a:Nodes {nodeTitle:{titleParam1}}),(b:Nodes {nodeTitle:{titleParam2}}) MERGE(a)-[r:CONCEPT]-(b) RETURN a,b', { titleParam1: nodeFrom, titleParam2: nodeTo, optionVal: optionVal })
+    session
+        .run('MATCH(a:Nodes {title:{titleParam1}}),(b:Nodes {title:{titleParam2}}) MERGE(a)-[r:'+ relationParam +']->(b) RETURN a,b', { titleParam1: nodeFrom, titleParam2: nodeTo })
         .then(function (result) {
             res.redirect('/');
             session.close();
@@ -68,7 +67,7 @@ app.post('/createRelation', function (req, res) {
         .catch(function (err) {
             console.log(err);
         });
-    res.redirect('/');*/
+    res.redirect('/');
 });
 
 /* Servicio Post para encontrar el shortest path entre dos nodos
