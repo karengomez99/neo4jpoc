@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "*",
+    "bootstrap": "^4.1.1",
     "ejs": "^2.4.2",
     "express": "*",
+    "jade-bootstrap": "^1.0.14",
     "morgan": "*",
     "neo4j-driver": "*",
     "node-while-loop": "^1.0.4",

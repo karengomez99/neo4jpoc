@@ -16,6 +16,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+
 
 // Driver para la session de conexión con neo4j
 var driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j', 'neo4j')); // Conect neo4j

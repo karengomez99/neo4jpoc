@@ -2,8 +2,8 @@ extends layout
 
 block content
   h1= title0
-  label Crea una relacion: 
-        form(method='POST' action='/createRelation')
+  label.div-relationship Crea una relacion: 
+        form.div-relationship(method='POST' action='/createRelation')
           div.form-group
             label(for='nodeFrom') Nodo 1:
             input#name.form-control(type='text', placeholder='Nodo 1' name='nodeFrom')
@@ -13,4 +13,4 @@ block content
           div.form-group
             label(for='relation') Añade una relacion:
             input#name.form-control(type='text', placeholder='Relación' name='relation')
-          button.btn.btn-primary(type='submit') Sign up
+          button.btn.btn-primary(type='submit') Crear 
