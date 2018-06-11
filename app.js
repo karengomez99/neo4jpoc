@@ -20,7 +20,7 @@ app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/c
 
 
 // Driver para la session de conexión con neo4j
-var driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j', 'neo4j')); // Conect neo4j
+var driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j', '1234')); // Conect neo4j
 var session = driver.session();
 
 app.get('/', function(req, res){
@@ -35,6 +35,27 @@ app.get('/createRelationship', function(req, res){
     res.render('create_relationship');
 });
 
+app.get('/findNodes', function(req, res){
+    res.render('find_nodes');
+});
+
+
+// Servicio Post para crear un nodo
+app.get('/findNode', function (req, res) {
+    session
+        .run('MATCH (n:Nodes) RETURN n')
+        .then(function (result) {
+            var nodo1 = result.records[0]._fields[0].properties.title;
+            var nodo2 = result.records[1]._fields[0].properties.title;
+            res.render('find_nodes', { nodo1: nodo1, nodo2: nodo2 });
+          //  res.redirect('/findNodes', segmentos);
+            session.close();
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+  //  res.redirect('/');
+});
 
 // Servicio Post para crear un nodo
 app.post('/createNode', function (req, res) {

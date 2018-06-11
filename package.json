@@ -17,7 +17,7 @@
     "morgan": "*",
     "neo4j-driver": "*",
     "node-while-loop": "^1.0.4",
-    "nodemon": "^1.17.3",
+    "nodemon": "^1.17.5",
     "pug": "^2.0.3"
   }
 }
