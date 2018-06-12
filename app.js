@@ -40,14 +40,22 @@ app.get('/findNodes', function(req, res){
 });
 
 
-// Servicio Post para crear un nodo
+// Servicio get para obtener nodos
 app.get('/findNode', function (req, res) {
     session
         .run('MATCH (n:Nodes) RETURN n')
         .then(function (result) {
-            var nodo1 = result.records[0]._fields[0].properties.title;
-            var nodo2 = result.records[1]._fields[0].properties.title;
-            res.render('find_nodes', { nodo1: nodo1, nodo2: nodo2 });
+            var listaNodos = [];
+            var listaRespuesta = result.records;
+
+            for (var i = 0; i < listaRespuesta.length; i++) {
+              /*  var nodo = new Object();
+                nodo.nombre = listaRespuesta[i]._fields[0].properties.title;
+                nodo.descripcion = listaRespuesta[i]._fields[0].properties.description;    */
+                listaNodos.push(listaRespuesta[i]._fields[0].properties.title);            
+            }    
+            console.log(listaNodos);
+            res.render('find_nodes', { listaNodos: listaNodos});
           //  res.redirect('/findNodes', segmentos);
             session.close();
         })

@@ -5,9 +5,7 @@ block content
     label Encuentra nodos: 
         form(method='GET' action='/findNode')
             button.btn.btn-primary(type='submit') Encuentra nodo
-            if nodo1 && nodo2
-                div.row
-                    div.col-6
-                        div.nodo #{nodo1}
-                    div.col-6
-                        div.nodo #{nodo2}
+        - var keywords = {listaNodos}
+        each val in keywords
+            div.col-6
+                div.nodo= val
